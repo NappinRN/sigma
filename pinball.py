@@ -144,6 +144,8 @@ class Ball:
         dy = self.y - bumper.y
         dist = math.hypot(dx, dy)
         if dist < self.radius + bumper.radius:
+            if dist == 0:
+                dist = 1e-6
             nx, ny = dx / dist, dy / dist
             self.vx = self.vx - 2 * (self.vx * nx + self.vy * ny) * nx
             self.vy = self.vy - 2 * (self.vx * nx + self.vy * ny) * ny
